@@ -5,6 +5,7 @@
 
 import type { Dictionary } from './types'
 import { Trie } from './trie'
+import { COMMON_MISSPELLINGS, HIGH_FREQUENCY_WORDS } from './corrections'
 
 // Common programming terms that should never be flagged
 const PROGRAMMING_WORDS = new Set([
@@ -92,7 +93,27 @@ export function createDictionary(words: Iterable<string>, flagWords?: Set<string
     },
 
     suggest(word: string, maxResults = 5): string[] {
-      return trie.suggest(word, maxResults)
+      const lower = word.toLowerCase()
+
+      // 1. Check common misspellings first (instant, high-quality)
+      const known = COMMON_MISSPELLINGS.get(lower)
+      if (known) return known.slice(0, maxResults)
+
+      // 2. Get trie suggestions
+      const trieSuggestions = trie.suggest(word, maxResults * 2)
+
+      // 3. Re-rank: prefer high-frequency words
+      trieSuggestions.sort((a, b) => {
+        const aFreq = HIGH_FREQUENCY_WORDS.has(a) ? 0 : 1
+        const bFreq = HIGH_FREQUENCY_WORDS.has(b) ? 0 : 1
+        if (aFreq !== bFreq) return aFreq - bFreq
+        // Then by length similarity to original
+        const aLenDiff = Math.abs(a.length - lower.length)
+        const bLenDiff = Math.abs(b.length - lower.length)
+        return aLenDiff - bLenDiff
+      })
+
+      return trieSuggestions.slice(0, maxResults)
     },
 
     isFlagged(word: string): boolean {

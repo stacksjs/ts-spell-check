@@ -63,9 +63,20 @@ function printJson(results: SpellCheckResult[], totalIssues: number) {
 
 async function runCheck(
   globs: string[],
-  opts: { config?: string, reporter?: string, verbose?: boolean },
+  opts: { config?: string, reporter?: string, verbose?: boolean, words?: string, ignore?: string },
 ): Promise<number> {
   const config = await loadConfig(opts.config)
+
+  // Merge --words and --ignore from CLI into config
+  if (opts.words) {
+    const extra = opts.words.split(',').map(w => w.trim()).filter(Boolean)
+    config.words = [...(config.words || []), ...extra]
+  }
+  if (opts.ignore) {
+    const extra = opts.ignore.split(',').map(w => w.trim()).filter(Boolean)
+    config.ignoreWords = [...(config.ignoreWords || []), ...extra]
+  }
+
   const checker = await SpellChecker.create(config)
   const files = await collectFiles(globs)
   const results: SpellCheckResult[] = []
@@ -105,6 +116,8 @@ async function main() {
     .command('[...globs]', 'Check files for spelling errors')
     .option('-c, --config <path>', 'Path to config file')
     .option('-r, --reporter <type>', 'Output format: stylish, json, compact', { default: 'stylish' })
+    .option('-w, --words <words>', 'Comma-separated extra words to accept')
+    .option('-i, --ignore <words>', 'Comma-separated words to ignore')
     .option('--verbose', 'Verbose output')
     .example('spell-check .')
     .example('spell-check src/index.ts')

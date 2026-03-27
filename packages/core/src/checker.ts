@@ -164,6 +164,37 @@ export class SpellChecker {
   }
 
   /**
+   * Check multiple files in parallel.
+   * Returns results for files that had issues (empty files are excluded).
+   */
+  async checkFiles(filePaths: string[], concurrency = 8): Promise<SpellCheckResult[]> {
+    const results: SpellCheckResult[] = []
+    const queue = [...filePaths]
+    const running: Promise<void>[] = []
+
+    const processFile = async (filePath: string) => {
+      try {
+        const result = await this.checkFile(filePath)
+        if (result.issues.length > 0) results.push(result)
+      }
+      catch { /* skip unreadable files */ }
+    }
+
+    while (queue.length > 0 || running.length > 0) {
+      while (running.length < concurrency && queue.length > 0) {
+        const file = queue.shift()!
+        const p = processFile(file).then(() => {
+          running.splice(running.indexOf(p), 1)
+        })
+        running.push(p)
+      }
+      if (running.length > 0) await Promise.race(running)
+    }
+
+    return results
+  }
+
+  /**
    * Check if a single word is spelled correctly.
    */
   isCorrect(word: string): boolean {

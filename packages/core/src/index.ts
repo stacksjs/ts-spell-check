@@ -27,6 +27,9 @@ export { loadConfig, DEFAULT_CONFIG } from './config'
 // Directives
 export { parseDirectives, isSuppressed } from './directives'
 
+// Corrections & frequency data
+export { COMMON_MISSPELLINGS, HIGH_FREQUENCY_WORDS } from './corrections'
+
 // Trie data structure (for advanced use)
 export { Trie } from './trie'
 

@@ -63,7 +63,8 @@ export class Trie {
 
   /**
    * Find words similar to the input using edit distance.
-   * Returns suggestions sorted by distance (closest first).
+   * Results are sorted by: edit distance first, then word frequency score
+   * (shorter common words rank higher), then alphabetically.
    */
   suggest(word: string, maxResults = 5, maxDistance = 2): string[] {
     const target = word.toLowerCase()
@@ -72,8 +73,17 @@ export class Trie {
     // BFS through the trie computing edit distance
     this.suggestRecursive(this.root, '', target, maxDistance, results)
 
-    // Sort by distance, then alphabetically
-    results.sort((a, b) => a.distance - b.distance || a.word.localeCompare(b.word))
+    // Sort by distance, then by frequency heuristic (shorter & common words first)
+    results.sort((a, b) => {
+      if (a.distance !== b.distance) return a.distance - b.distance
+      // Prefer words closer in length to the target
+      const aLenDiff = Math.abs(a.word.length - target.length)
+      const bLenDiff = Math.abs(b.word.length - target.length)
+      if (aLenDiff !== bLenDiff) return aLenDiff - bLenDiff
+      // Prefer shorter words (more common in English)
+      if (a.word.length !== b.word.length) return a.word.length - b.word.length
+      return a.word.localeCompare(b.word)
+    })
 
     return results.slice(0, maxResults).map(r => r.word)
   }
