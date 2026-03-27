@@ -1,0 +1,65 @@
+{
+  "name": "ts-spell-check-vscode",
+  "displayName": "TS Spell Check",
+  "description": "Fast spell checker for code — zero dependencies, built with Bun",
+  "version": "0.1.0",
+  "publisher": "stacksjs",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Linters", "Other"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "TS Spell Check",
+      "properties": {
+        "tsSpellCheck.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable spell checking"
+        },
+        "tsSpellCheck.language": {
+          "type": "string",
+          "default": "en",
+          "description": "Dictionary language"
+        },
+        "tsSpellCheck.customWords": {
+          "type": "array",
+          "default": [],
+          "description": "Custom words to add to the dictionary"
+        },
+        "tsSpellCheck.ignorePaths": {
+          "type": "array",
+          "default": ["**/node_modules/**", "**/dist/**", "**/.git/**"],
+          "description": "Glob patterns to ignore"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "tsSpellCheck.addWordToWorkspace",
+        "title": "Add Word to Workspace Dictionary"
+      },
+      {
+        "command": "tsSpellCheck.addWordToUser",
+        "title": "Add Word to User Dictionary"
+      },
+      {
+        "command": "tsSpellCheck.ignoreWord",
+        "title": "Ignore Word"
+      }
+    ]
+  },
+  "scripts": {
+    "build": "bun build src/extension.ts --outdir dist --target node --external vscode",
+    "watch": "bun build src/extension.ts --outdir dist --target node --external vscode --watch"
+  },
+  "dependencies": {
+    "ts-spell-check": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0"
+  },
+  "license": "MIT"
+}

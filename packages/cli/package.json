@@ -1,0 +1,19 @@
+{
+  "name": "ts-spell-check-cli",
+  "version": "0.1.0",
+  "description": "CLI for ts-spell-check",
+  "type": "module",
+  "bin": {
+    "spell-check": "./bin/cli.ts"
+  },
+  "scripts": {
+    "dev": "bun bin/cli.ts",
+    "build": "bun build bin/cli.ts --outdir dist --target bun",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "@stacksjs/clapp": "^0.2.0",
+    "ts-spell-check": "workspace:*"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,25 @@
+{
+  "name": "ts-spell-check-pickier",
+  "version": "0.1.0",
+  "description": "Pickier spell-check lint rules powered by ts-spell-check",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "bun build src/index.ts --outdir dist --target bun",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "ts-spell-check": "workspace:*"
+  },
+  "peerDependencies": {
+    "pickier": ">=0.1.0"
+  },
+  "license": "MIT"
+}

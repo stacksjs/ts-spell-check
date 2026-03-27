@@ -1,0 +1,21 @@
+{
+  "name": "ts-spell-check-monorepo",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "bun run --cwd packages/core build && bun run --cwd packages/cli build",
+    "test": "bun test",
+    "test:core": "bun test packages/core",
+    "test:cli": "bun test packages/cli",
+    "typecheck": "bun --bun tsc --noEmit",
+    "lint": "bunx --bun pickier .",
+    "dev": "bun run --cwd packages/cli dev"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.0",
+    "bun-plugin-dtsx": "^0.9.0"
+  }
+}

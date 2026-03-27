@@ -1,0 +1,22 @@
+{
+  "name": "ts-spell-check",
+  "version": "0.1.0",
+  "description": "Fast, zero-dependency spell checker for code. Built with Bun.",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": ["dist", "src/words"],
+  "scripts": {
+    "build": "bun build src/index.ts --outdir dist --target bun && bun --bun tsc --declaration --emitDeclarationOnly --outDir dist",
+    "test": "bun test",
+    "typecheck": "bun --bun tsc --noEmit"
+  },
+  "keywords": ["spell-check", "spellcheck", "lint", "bun", "typescript"],
+  "license": "MIT"
+}

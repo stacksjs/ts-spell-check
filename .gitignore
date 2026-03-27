@@ -1,0 +1,5 @@
+node_modules/
+pantry/
+dist/
+*.lock
+.DS_Store
