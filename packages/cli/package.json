@@ -1,7 +1,7 @@
 {
   "name": "@stacksjs/ts-spell-check-cli",
   "type": "module",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "CLI for ts-spell-check",
   "author": "Chris Breuer <chris@stacksjs.org>",
   "license": "MIT",

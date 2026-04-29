@@ -2,7 +2,7 @@
   "name": "ts-spell-check-vscode",
   "displayName": "TS Spell Check",
   "description": "Fast spell checker for code — zero dependencies, built with Bun",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "publisher": "stacksjs",
   "engines": {
     "vscode": "^1.85.0"

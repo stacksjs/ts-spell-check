@@ -1,7 +1,7 @@
 {
   "name": "@stacksjs/ts-spell-check-pickier",
   "type": "module",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "Pickier spell-check lint rules powered by ts-spell-check",
   "author": "Chris Breuer <chris@stacksjs.org>",
   "license": "MIT",
