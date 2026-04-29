@@ -18,6 +18,11 @@
     "isolatedModules": true,
     "verbatimModuleSyntax": true,
     "skipDefaultLibCheck": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@stacksjs/ts-spell-check": ["./packages/core/src/index.ts"],
+      "@stacksjs/ts-spell-check/*": ["./packages/core/src/*"]
+    }
   }
 }
