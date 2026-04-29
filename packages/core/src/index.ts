@@ -3,7 +3,7 @@
  *
  * @example
  * ```ts
- * import { SpellChecker } from 'ts-spell-check'
+ * import { SpellChecker } from '@stacksjs/ts-spell-check'
  *
  * const checker = await SpellChecker.create()
  * const result = checker.checkText('This is a tset of the spel checker')

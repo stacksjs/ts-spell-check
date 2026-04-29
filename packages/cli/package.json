@@ -1,11 +1,33 @@
 {
-  "name": "ts-spell-check-cli",
+  "name": "@stacksjs/ts-spell-check-cli",
+  "type": "module",
   "version": "0.1.0",
   "description": "CLI for ts-spell-check",
-  "type": "module",
+  "author": "Chris Breuer <chris@stacksjs.org>",
+  "license": "MIT",
+  "homepage": "https://github.com/stacksjs/ts-spell-check#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stacksjs/ts-spell-check.git",
+    "directory": "packages/cli"
+  },
+  "bugs": {
+    "url": "https://github.com/stacksjs/ts-spell-check/issues"
+  },
+  "keywords": [
+    "spell-check",
+    "spellcheck",
+    "cli",
+    "bun"
+  ],
   "bin": {
     "spell-check": "./bin/cli.ts"
   },
+  "files": [
+    "README.md",
+    "bin",
+    "dist"
+  ],
   "scripts": {
     "dev": "bun bin/cli.ts",
     "build": "bun build bin/cli.ts --outdir dist --target bun",
@@ -13,7 +35,6 @@
   },
   "dependencies": {
     "@stacksjs/clapp": "^0.2.0",
-    "ts-spell-check": "workspace:*"
-  },
-  "license": "MIT"
+    "@stacksjs/ts-spell-check": "workspace:*"
+  }
 }

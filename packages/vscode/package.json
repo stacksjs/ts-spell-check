@@ -56,7 +56,7 @@
     "watch": "bun build src/extension.ts --outdir dist --target node --external vscode --watch"
   },
   "dependencies": {
-    "ts-spell-check": "workspace:*"
+    "@stacksjs/ts-spell-check": "workspace:*"
   },
   "devDependencies": {
     "@types/vscode": "^1.85.0"

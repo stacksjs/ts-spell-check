@@ -6,16 +6,36 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "bun run --cwd packages/core build && bun run --cwd packages/cli build",
+    "build": "bun run --cwd packages/core build && bun run --cwd packages/cli build && bun run --cwd packages/pickier-plugin build",
+    "fresh": "bunx rimraf node_modules/ bun.lock packages/*/node_modules packages/*/dist && bun i",
     "test": "bun test",
     "test:core": "bun test packages/core",
     "test:cli": "bun test packages/cli",
-    "typecheck": "bun --bun tsc --noEmit",
     "lint": "bunx --bun pickier .",
-    "dev": "bun run --cwd packages/cli dev"
+    "lint:fix": "bunx --bun pickier . --fix",
+    "format": "bunx --bun pickier . --format",
+    "format:fix": "bunx --bun pickier . --format --write",
+    "typecheck": "bun --bun tsc --noEmit",
+    "dev": "bun run --cwd packages/cli dev",
+    "changelog": "bunx --bun logsmith --verbose",
+    "changelog:generate": "bunx --bun logsmith --output CHANGELOG.md",
+    "release": "bun --bun run changelog:generate && bunx --bun bumpx prompt --recursive",
+    "release:patch": "bun --bun run changelog:generate && bunx --bun bumpx patch --yes --recursive",
+    "release:minor": "bun --bun run changelog:generate && bunx --bun bumpx minor --yes --recursive",
+    "release:major": "bun --bun run changelog:generate && bunx --bun bumpx major --yes --recursive",
+    "postinstall": "bunx git-hooks"
   },
   "devDependencies": {
-    "typescript": "^5.8.0",
-    "bun-plugin-dtsx": "^0.9.0"
+    "@types/bun": "latest",
+    "better-dx": "^0.2.7"
+  },
+  "git-hooks": {
+    "pre-commit": {
+      "stagedLint": {
+        "*.{js,ts,json,yaml,yml,md}": "bunx --bun pickier lint --fix"
+      },
+      "autoRestage": true
+    },
+    "commit-msg": "bunx gitlint --edit .git/COMMIT_EDITMSG"
   }
 }

@@ -20,8 +20,8 @@
  * ```
  */
 
-import { SpellChecker, extractWords, parseDirectives, isSuppressed } from 'ts-spell-check'
-import type { SpellIssue } from 'ts-spell-check'
+import { SpellChecker, extractWords, parseDirectives, isSuppressed } from '@stacksjs/ts-spell-check'
+import type { SpellIssue } from '@stacksjs/ts-spell-check'
 
 // Lazy-loaded checker instance (shared across rule invocations)
 let _checker: SpellChecker | null = null

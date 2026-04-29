@@ -1,25 +1,46 @@
 {
-  "name": "ts-spell-check-pickier",
+  "name": "@stacksjs/ts-spell-check-pickier",
+  "type": "module",
   "version": "0.1.0",
   "description": "Pickier spell-check lint rules powered by ts-spell-check",
-  "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "author": "Chris Breuer <chris@stacksjs.org>",
+  "license": "MIT",
+  "homepage": "https://github.com/stacksjs/ts-spell-check#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stacksjs/ts-spell-check.git",
+    "directory": "packages/pickier-plugin"
+  },
+  "bugs": {
+    "url": "https://github.com/stacksjs/ts-spell-check/issues"
+  },
+  "keywords": [
+    "spell-check",
+    "spellcheck",
+    "pickier",
+    "lint",
+    "plugin"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     }
   },
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "README.md",
+    "dist"
+  ],
   "scripts": {
-    "build": "bun build src/index.ts --outdir dist --target bun",
+    "build": "bun build src/index.ts --outdir dist --target bun && bun --bun tsc --declaration --emitDeclarationOnly --outDir dist",
     "test": "bun test"
   },
   "dependencies": {
-    "ts-spell-check": "workspace:*"
+    "@stacksjs/ts-spell-check": "workspace:*"
   },
   "peerDependencies": {
     "pickier": ">=0.1.0"
-  },
-  "license": "MIT"
+  }
 }

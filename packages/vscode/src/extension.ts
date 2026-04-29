@@ -1,6 +1,6 @@
 import * as vscode from 'vscode'
-import { SpellChecker } from 'ts-spell-check'
-import type { SpellCheckResult, SpellIssue } from 'ts-spell-check'
+import { SpellChecker } from '@stacksjs/ts-spell-check'
+import type { SpellCheckResult, SpellIssue } from '@stacksjs/ts-spell-check'
 
 const DIAGNOSTIC_SOURCE = 'ts-spell-check'
 const DIAGNOSTIC_COLLECTION = vscode.languages.createDiagnosticCollection(DIAGNOSTIC_SOURCE)

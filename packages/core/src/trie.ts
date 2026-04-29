@@ -181,7 +181,9 @@ export class Trie {
           prev[j - 1] + cost, // substitution
         )
       }
-      ;[prev, curr] = [curr, prev]
+      const tmp = prev
+      prev = curr
+      curr = tmp
     }
     return prev[n]
   }
