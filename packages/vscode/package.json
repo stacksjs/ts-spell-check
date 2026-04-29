@@ -2,13 +2,18 @@
   "name": "ts-spell-check-vscode",
   "displayName": "TS Spell Check",
   "description": "Fast spell checker for code — zero dependencies, built with Bun",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "publisher": "stacksjs",
   "engines": {
     "vscode": "^1.85.0"
   },
-  "categories": ["Linters", "Other"],
-  "activationEvents": ["onStartupFinished"],
+  "categories": [
+    "Linters",
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "main": "./dist/extension.js",
   "contributes": {
     "configuration": {
@@ -31,7 +36,11 @@
         },
         "tsSpellCheck.ignorePaths": {
           "type": "array",
-          "default": ["**/node_modules/**", "**/dist/**", "**/.git/**"],
+          "default": [
+            "**/node_modules/**",
+            "**/dist/**",
+            "**/.git/**"
+          ],
           "description": "Glob patterns to ignore"
         }
       }
