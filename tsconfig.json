@@ -19,6 +19,7 @@
     "verbatimModuleSyntax": true,
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
+    "ignoreDeprecations": "6.0",
     "baseUrl": ".",
     "paths": {
       "@stacksjs/ts-spell-check": ["./packages/core/src/index.ts"],
