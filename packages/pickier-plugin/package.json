@@ -42,6 +42,6 @@
     "@stacksjs/ts-spell-check": "workspace:*"
   },
   "peerDependencies": {
-    "pickier": ">=0.1.0"
+    "pickier": ">=0.1.58"
   }
 }
