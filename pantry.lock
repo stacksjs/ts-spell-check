@@ -1,0 +1,69 @@
+{
+  "version": "1.0.0",
+  "lockfileVersion": 2,
+  "workspaces": {
+    "": {
+      "name": "ts-spell-check-monorepo",
+      "devDependencies": {
+        "bun-plugin-dtsx": "^0.9.0",
+        "typescript": "^5.8.0"
+      }
+    },
+    "packages/cli": {
+      "name": "ts-spell-check-cli",
+      "version": "0.1.0",
+      "dependencies": {
+        "ts-spell-check": "workspace:*"
+      }
+    },
+    "packages/core": {
+      "name": "ts-spell-check",
+      "version": "0.1.0"
+    },
+    "packages/pickier-plugin": {
+      "name": "ts-spell-check-pickier",
+      "version": "0.1.0",
+      "dependencies": {
+        "ts-spell-check": "workspace:*"
+      }
+    },
+    "packages/vscode": {
+      "name": "ts-spell-check-vscode",
+      "version": "0.1.0",
+      "dependencies": {
+        "ts-spell-check": "workspace:*"
+      },
+      "devDependencies": {
+        "@types/vscode": "^1.85.0"
+      }
+    }
+  },
+  "packages": {
+    "@types/vscode@1.110.0": {
+      "name": "@types/vscode",
+      "version": "1.110.0",
+      "source": "npm",
+      "resolved": "https://registry.npmjs.org/@types/vscode/-/vscode-1.110.0.tgz",
+      "integrity": "sha512-AGuxUEpU4F4mfuQjxPPaQVyuOMhs+VT/xRok1jiHVBubHK7lBRvCuOMZG0LKUwxncrPorJ5qq/uil3IdZBd5lA=="
+    },
+    "bun-plugin-dtsx@0.9.13": {
+      "name": "bun-plugin-dtsx",
+      "version": "0.9.13",
+      "source": "npm",
+      "resolved": "https://registry.npmjs.org/bun-plugin-dtsx/-/bun-plugin-dtsx-0.9.13.tgz",
+      "integrity": "sha512-CRiQ6uqrl8n2ZE8saZrZNYnSp+kMkAwHAUV+sf4io0IAxbZAOf+thO0miOs70urI3oCyp1DM/0K+4pitUeL90g==",
+      "dependencies": {
+        "@stacksjs/dtsx": "0.9.13"
+      }
+    },
+    "typescript@^5.8.0": {
+      "name": "typescript",
+      "version": "^5.8.0",
+      "source": "npm",
+      "bin": {
+        "tsc": "./bin/tsc",
+        "tsserver": "./bin/tsserver"
+      }
+    }
+  }
+}

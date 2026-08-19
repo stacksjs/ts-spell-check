@@ -40,6 +40,7 @@
   "scripts": {
     "build": "bun build src/index.ts --outdir dist --target bun && bun --bun tsc --declaration --emitDeclarationOnly --outDir dist",
     "test": "bun test",
-    "typecheck": "bun --bun tsc --noEmit"
+    "typecheck": "bun --bun tsc --noEmit",
+    "prepublishOnly": "bun run build"
   }
 }

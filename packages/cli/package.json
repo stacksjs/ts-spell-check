@@ -31,7 +31,8 @@
   "scripts": {
     "dev": "bun bin/cli.ts",
     "build": "bun build bin/cli.ts --outdir dist --target bun",
-    "test": "bun test"
+    "test": "bun test",
+    "prepublishOnly": "bun run build"
   },
   "dependencies": {
     "@stacksjs/clapp": "^0.2.0",

@@ -35,7 +35,8 @@
   ],
   "scripts": {
     "build": "bun build src/index.ts --outdir dist --target bun && bun --bun tsc --declaration --emitDeclarationOnly --outDir dist",
-    "test": "bun test"
+    "test": "bun test",
+    "prepublishOnly": "bun run build"
   },
   "dependencies": {
     "@stacksjs/ts-spell-check": "workspace:*"
