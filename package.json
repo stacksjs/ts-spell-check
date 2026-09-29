@@ -18,13 +18,13 @@
     "format:fix": "bunx --bun pickier . --format --write",
     "typecheck": "bun --bun tsc --noEmit",
     "dev": "bun run --cwd packages/cli dev",
-    "changelog": "bunx --bun logsmith --verbose",
-    "changelog:generate": "bunx --bun logsmith --output CHANGELOG.md",
+    "changelog": "bunx --bun @stacksjs/logsmith --verbose",
+    "changelog:generate": "bunx --bun @stacksjs/logsmith --output CHANGELOG.md",
     "release": "bun --bun run changelog:generate && bunx --bun @stacksjs/bumpx prompt --recursive",
     "release:patch": "bun --bun run changelog:generate && bunx --bun @stacksjs/bumpx patch --yes --recursive",
     "release:minor": "bun --bun run changelog:generate && bunx --bun @stacksjs/bumpx minor --yes --recursive",
     "release:major": "bun --bun run changelog:generate && bunx --bun @stacksjs/bumpx major --yes --recursive",
-    "postinstall": "bunx git-hooks"
+    "postinstall": "bunx bun-git-hooks"
   },
   "devDependencies": {
     "@types/bun": "latest",
