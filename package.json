@@ -20,10 +20,10 @@
     "dev": "bun run --cwd packages/cli dev",
     "changelog": "bunx --bun logsmith --verbose",
     "changelog:generate": "bunx --bun logsmith --output CHANGELOG.md",
-    "release": "bun --bun run changelog:generate && bunx --bun bumpx prompt --recursive",
-    "release:patch": "bun --bun run changelog:generate && bunx --bun bumpx patch --yes --recursive",
-    "release:minor": "bun --bun run changelog:generate && bunx --bun bumpx minor --yes --recursive",
-    "release:major": "bun --bun run changelog:generate && bunx --bun bumpx major --yes --recursive",
+    "release": "bun --bun run changelog:generate && bunx --bun @stacksjs/bumpx prompt --recursive",
+    "release:patch": "bun --bun run changelog:generate && bunx --bun @stacksjs/bumpx patch --yes --recursive",
+    "release:minor": "bun --bun run changelog:generate && bunx --bun @stacksjs/bumpx minor --yes --recursive",
+    "release:major": "bun --bun run changelog:generate && bunx --bun @stacksjs/bumpx major --yes --recursive",
     "postinstall": "bunx git-hooks"
   },
   "devDependencies": {
